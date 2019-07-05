@@ -488,12 +488,7 @@ GEM
     parslet (1.8.2)
     pdf-reader (0.9.3)
       Ascii85 (>= 0.9)
-    percy-capybara (2.5.1)
-      percy-client (~> 1.10)
-    percy-client (1.10.0)
-      addressable
-      faraday (>= 0.9)
-      httpclient (>= 2.6)
+    percy-capybara (4.0.1)
     pisoni (1.26.0)
       faraday (>= 0.9.1)
       injectedlogger (>= 0.0.13)
@@ -520,7 +515,7 @@ GEM
     pry-stack_explorer (0.4.9.2)
       binding_of_caller (>= 0.7)
       pry (>= 0.9.11)
-    public_suffix (3.0.3)
+    public_suffix (3.1.1)
     rack (1.6.11)
     rack-no_animations (1.0.3)
     rack-openid (1.4.2)
@@ -900,7 +895,7 @@ DEPENDENCIES
   open_id_authentication
   paperclip (~> 5.3.0)
   parallel_tests (~> 2.3)
-  percy-capybara (~> 2.5.1)
+  percy-capybara (~> 4.0.1)
   pisoni (~> 1.26)
   prawn-core!
   prawn-format (= 0.2.1)
