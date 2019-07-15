@@ -44,3 +44,21 @@ Feature: Multiservice feature
     And I am on the edit page for service "Second service" of provider "foo.example.com"
     When I follow "I understand the consequences, proceed to delete 'Second service' service" and I confirm dialog box
     Then I should see "Service 'Second service' will be deleted shortly."
+
+  Scenario: Folded services have no overview data
+    Given I am logged in as provider "foo.example.com"
+    And provider "foo.example.com" has "multiple_services" switch allowed
+    When I am on the provider dashboard
+    And service "Fancy API" is folded
+    Then data of "Fancy API" should be empty
+
+  @javascript
+  Scenario: Unfolded services load overview data
+    Given I am logged in as provider "foo.example.com"
+    And provider "foo.example.com" has "multiple_services" switch allowed
+    When I am on the provider dashboard
+    And service "Fancy API" is folded
+    And I unfold service "Fancy API"
+    And data of "Fancy API" is loading
+    Then I wait a moment
+    And data of "Fancy API" is displayed
