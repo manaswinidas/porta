@@ -60,5 +60,6 @@ Feature: Multiservice feature
     And service "Fancy API" is folded
     And I unfold service "Fancy API"
     And data of "Fancy API" is loading
-    Then I wait a moment
+    # Then I wait a moment
+    Then I wait 1 second
     And data of "Fancy API" is displayed
