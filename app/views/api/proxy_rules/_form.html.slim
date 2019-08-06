@@ -1,0 +1,17 @@
+= form.inputs do
+  = form.input :http_method, as: :select, collection: ProxyRule::ALLOWED_HTTP_METHODS, include_blank: false, label: 'Verb'
+  = form.input :pattern
+  label.col-md-4.control-label title='Increment a value from the metric or method'
+    = '+ Metric or Method'
+  ol.list-unstyled
+    - if @service.using_proxy_pro?
+      = form.input :redirect_url
+    = form.input :delta, label: false, input_html: { style: 'width: 4em' }, wrapper_html: {style: 'display: inline'}
+    = form.input :metric_id, as: :select, collection: service.metrics, include_blank: false,
+                             label: false, input_html: { style: 'width: 44em' }, wrapper_html: {style: 'display: inline'}
+  br.clear
+  = form.input :last, label: 'Last?'
+  = form.input :position
+
+= form.buttons do
+  = form.commit_button "#{proxy_rule.new_record? ? 'Create' : 'Update'} Mapping Rule"
