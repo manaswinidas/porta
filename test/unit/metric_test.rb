@@ -72,6 +72,21 @@ class MetricTest < ActiveSupport::TestCase
     assert metric_method.errors[:system_name].present?
   end
 
+  test 'fill owner' do
+    provider = FactoryBot.create(:simple_provider)
+
+    service = FactoryBot.create(:service, account: provider)
+    service_metric = FactoryBot.build(:metric, service: service)
+    refute service_metric.owner
+    assert service_metric.valid?
+    assert_equal service, service_metric.owner
+
+    backend_api = BackendApi.create(name: 'API', system_name: 'api', account: provider)
+    backend_metric = FactoryBot.build(:metric, owner: backend_api)
+    assert_equal backend_api, backend_metric.owner
+    assert backend_metric.valid?
+  end
+
   test 'archive as deleted' do
     service = FactoryBot.create(:simple_service)
     Timecop.freeze(Time.utc(2009, 12, 22)) { FactoryBot.create(:metric, service: service) }
