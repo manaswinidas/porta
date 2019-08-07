@@ -1,5 +1,3 @@
-require_dependency 'month'
-
 # TODO: add uniqueness check on provider/buyer/period scope
 #
 class Invoice < ApplicationRecord

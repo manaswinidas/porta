@@ -1,7 +1,3 @@
-# frozen_string_literal: true
-
-require_dependency 'backend_client'
-
 class Account < ApplicationRecord
   # Hack to remove all the attributes with names matching the regex from @attributes
   # It is enough for rails not persisting them in actual columns.
@@ -58,7 +54,6 @@ class Account < ApplicationRecord
   include CreditCard
   include Gateway
   include States
-  require_dependency 'account/domains'
   include Domains
 
   #TODO: this needs testing?
